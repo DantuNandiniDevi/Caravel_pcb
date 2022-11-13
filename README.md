@@ -22,21 +22,21 @@ This git repo describes the whole process of PCB design for the Caravel_Board an
 
 The Booting flow during reset and start are almost the same.
 
--Initializing all the register file from x1 to x31 with value 0, except x2 (Stack pointer) which has been initialized by the reset itself (it is also initiated during start ).
+- Initializing all the register file from x1 to x31 with value 0, except x2 (Stack pointer) which has been initialized by the reset itself (it is also initiated during start ).
 
--Copying the initialization value of .data section which involves moving the data from _sidata (start address for the initialization values of the .data section defined in linker script) to between  _sdata and _edata. (start & end address for the .data section defined in linker script respectively).
+- Copying the initialization value of .data section which involves moving the data from _sidata (start address for the initialization values of the .data section defined in linker script) to between  _sdata and _edata. (start & end address for the .data section defined in linker script respectively).
 
--Initializing the value present in .bss section (block start symbol) to zero. The .bss section address starts from _sbss to _ebss . 
+- Initializing the value present in .bss section (block start symbol) to zero. The .bss section address starts from _sbss to _ebss . 
 
 NOTE : The .data section and .bss section are present in RAM (as described in linker file) with the origin address of 0x01000000. 
        The program code to run after reset and other data are present in the Flash with origin address 0x10000000. 
        The _sidata of .data section is 0x10000210. which stated as _etext is the diassembly file. 
 
--Setting the CS (Chip Select) bit HIGH and IO0 as output through SPI control register at address 0x28000000 and enabling manual control of SPI.
+- Setting the CS (Chip Select) bit HIGH and IO0 as output through SPI control register at address 0x28000000 and enabling manual control of SPI.
 
--Sending optional WREN command through SPI. These command enable access to files, IO , networking etc
+- Sending optional WREN command through SPI. These command enable access to files, IO , networking etc
 
--Once the command have been send the SPI is returned to the previous mode (MEMIO). 
+- Once the command have been send the SPI is returned to the previous mode (MEMIO). 
 
 ## Implementation: 
 
