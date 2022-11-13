@@ -44,6 +44,7 @@ NOTE : The .data section and .bss section are present in RAM (as described in li
 - This triggered the reset flow till the picorv32 "resetn" which was activated at 1.005us.
 - The starting address of flash (x10000000) where the bootcode and rest of the programme are present got loaded in the CPU at 1.009us. 
 - The instructon present in the (x10000000) got executed at 1.343us. 
+- the instruction present in address (0x100000B8) marks the end of bootcode excecution.
 - The entire bootcode was executed till 6.747us.
 - The period for which the bootcode ran is approximately 5.738us.
 - After that the .main section began o execute which included the firmware and blink program.
