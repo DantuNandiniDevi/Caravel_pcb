@@ -2,7 +2,7 @@
 
 This git repo describes the whole process of PCB design for the Caravel_Board and verifying/testing the MPW_shuttle chips. <br>
 
-# Firmware - Asmitha/Aman/Ayyappa
+# Firmware - Asmita/Aman/Ayyappa
 
 # Host to FT232 & FT232 to Host - Nandini/Oishi/Nisha
 
