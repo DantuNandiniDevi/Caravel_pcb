@@ -49,6 +49,10 @@ NOTE : - The .data section and .bss section are present in RAM (as described in 
 - The period for which the bootcode ran is approximately 5.738us.
 - After that the .main section began o execute which included the firmware and blink program.
 
+### Start of Bootcode:
+
+![](images/Bootcode_start.png)
+
 Note: 
 In this implementation the WREN command were not transmitted. 
 
