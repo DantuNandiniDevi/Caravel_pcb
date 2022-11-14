@@ -17,6 +17,17 @@ This git repo describes the whole process of PCB design for the Caravel_Board an
 
 ## Reset Flow:
 
+![](images/Reset_flow_0.png)
+
+![](images/Reset_flow.png)
+
+- The reset is triggered exteranlly from outside the caravel chip. This leads to the reset of the
+padframe chip_io throught "resetb" which is triggered at exactly 1us.
+
+- Eventually this lead to triggering of reset of various components in management core such as PLL , caravel_ clocking, housekeeping etc. which is also denoted by "resetb" at 1.001us. 
+
+- From caraval_clocking the reset of management_soc is triggered at 1.005us which is denoted by "resetn". 
+
 
 ## Bootcode flow:
 
@@ -28,9 +39,13 @@ The Booting flow during reset and start are almost the same.
 
 - Initializing the value present in .bss section (block start symbol) to zero. The .bss section address starts from _sbss to _ebss . 
 
-NOTE : - The .data section and .bss section are present in RAM (as described in linker file) with the origin address of 0x01000000. 
-       - The program code to run after reset and other data are present in the Flash with origin address 0x10000000. 
-       - The _sidata of .data section is 0x10000210. which stated as _etext is the diassembly file. 
+NOTE :
+- The .data section and .bss section are present in RAM (as described in linker file) with the origin address of 0x01000000.  
+- The program code to run after reset and other data are present in the Flash with origin address 0x10000000. 
+- The Bootcode is executed using Execute-In-Place (XIP) method.
+- Execute-In-Place (XIP) is a method of executing code directly from the serial Flash memory without copying the code to the RAM. The serial Flash memory is seen as another memory in the MCU's memory address map.
+- The _sidata of .data section is 0x10000210. which stated as _etext is the diassembly file. 
+
 
 - Setting the CS (Chip Select) bit HIGH and IO0 as output through SPI control register at address 0x28000000 and enabling manual control of SPI.
 
@@ -41,17 +56,28 @@ NOTE : - The .data section and .bss section are present in RAM (as described in 
 ## Implementation: 
 
 - The reset signal to the padframe "resetb" was activated as 1us. 
+- 
 - This triggered the reset flow till the picorv32 "resetn" which was activated at 1.005us.
+- 
 - The starting address of flash (x10000000) where the bootcode and rest of the programme are present got loaded in the CPU at 1.009us. 
+- 
 - The instructon present in the (x10000000) got executed at 1.343us. 
+- 
 - the instruction present in address (0x100000B8) marks the end of bootcode excecution.
+- 
 - The entire bootcode was executed till 6.747us.
+- 
 - The period for which the bootcode ran is approximately 5.738us.
+- 
 - After that the .main section began o execute which included the firmware and blink program.
 
 ### Start of Bootcode:
 
 ![](images/Bootcode_start.png)
+
+### End of Bootcode:
+
+![](images/Bootcode_end.png)
 
 Note: 
 In this implementation the WREN command were not transmitted. 
