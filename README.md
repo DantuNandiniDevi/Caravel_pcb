@@ -39,6 +39,12 @@ The Booting flow during reset and start are almost the same.
 
 - Initializing the value present in .bss section (block start symbol) to zero. The .bss section address starts from _sbss to _ebss . 
 
+- Setting the CS (Chip Select) bit HIGH and IO0 as output through SPI control register at address 0x28000000 and enabling manual control of SPI.
+
+- Sending optional WREN command through SPI. These command enable access to files, IO , networking etc
+
+- Once the command have been send the SPI is returned to the previous mode (MEMIO).
+
 NOTE :
 - The .data section and .bss section are present in RAM (as described in linker file) with the origin address of 0x01000000.  
 - The program code to run after reset and other data are present in the Flash with origin address 0x10000000. 
@@ -46,12 +52,6 @@ NOTE :
 - Execute-In-Place (XIP) is a method of executing code directly from the serial Flash memory without copying the code to the RAM. The serial Flash memory is seen as another memory in the MCU's memory address map.
 - The _sidata of .data section is 0x10000210. which stated as _etext is the diassembly file. 
 
-
-- Setting the CS (Chip Select) bit HIGH and IO0 as output through SPI control register at address 0x28000000 and enabling manual control of SPI.
-
-- Sending optional WREN command through SPI. These command enable access to files, IO , networking etc
-
-- Once the command have been send the SPI is returned to the previous mode (MEMIO). 
 
 ## Implementation: 
 
