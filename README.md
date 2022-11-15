@@ -2,6 +2,29 @@
 
 This git repo describes the whole process of PCB design for the Caravel_Board and verifying/testing the MPW_shuttle chips. <br>
 
+# Verification
+
+<b> Change the paths of `PDK_ROOT`, `PDK`, `GCC_PATH` and `GCC_PREFIX` according to the paths on the system you are working on.
+
+Steps to follow :
+
+```
+$ cd Caravel_pcb/verification/verilog/dv/caravel/mgmt_soc/hkspi
+$ export PDK_ROOT=/home/ubuntu/OpenLane/pdks
+$ export PDK=sky130A
+$ export GCC_PATH=/opt/riscv32/bin
+$ export GCC_PREFIX=riscv32-unknown-elf
+$ make 
+$ gtkwave hkspi.vcd 
+$ riscv32-unknown-elf-objdump --disassemble-all hkspi.elf > hkspi.disasm  <This to generate the disassembly file>
+``` 
+
+After opening gtkwave we can check multiple signals according to our requirements:
+
+-> The memory address and data signals are at `hkspi_tb -> uut -> soc -> soc -> cpu`. Among the signals at the cpu module <b><I> mem_addr, mem_rdata and mem_wdata </b></I> can be accessed to evaluate the signals.
+
+-> To check the Flash signal flow. We can see flash signals <b><I> flash_clk, flash_csb, flash_i0 and flash_i1 at every level of the modules and also in the spiflash module </b></I>
+
 # Firmware - Asmita/Aman/Ayyappa
 - C code written(which gets concerted to hex along with bootcode) /flowchart in ppt/
 - explanation of header file included in the C code (relating it to the efabless caravel documentation)
