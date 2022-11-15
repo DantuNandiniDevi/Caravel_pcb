@@ -4,7 +4,7 @@ This git repo describes the whole process of PCB design for the Caravel_Board an
 
 # Verification
 
-<b> Change the paths of `PDK_ROOT`, `PDK`, `GCC_PATH` and `GCC_PREFIX` according to the paths on the system you are working on.
+Change the paths of `PDK_ROOT`, `PDK`, `GCC_PATH` and `GCC_PREFIX` according to the paths on the system you are working on.
 
 Steps to follow :
 
