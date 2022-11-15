@@ -4,7 +4,7 @@ This git repo describes the whole process of PCB design for the Caravel_Board an
 
 # Verification
 
-Change the paths of `PDK_ROOT`, `PDK`, `GCC_PATH` and `GCC_PREFIX` according to the paths on the system you are working on.
+<b> Change the paths of `PDK_ROOT`, `PDK`, `GCC_PATH` and `GCC_PREFIX` according to the paths on the system you are working on. </b>
 
 Steps to follow :
 
@@ -23,7 +23,7 @@ After opening gtkwave we can check multiple signals according to our requirement
 
 -> The memory address and data signals are at `hkspi_tb -> uut -> soc -> soc -> cpu`. Among the signals at the cpu module <b><I> mem_addr, mem_rdata and mem_wdata </b></I> can be accessed to evaluate the signals.
 
--> To check the Flash signal flow. We can see flash signals <b><I> flash_clk, flash_csb, flash_i0 and flash_i1 at every level of the modules and also in the spiflash module </b></I>
+-> To check the Flash signal flow. We can see flash signals <b><I> flash_clk, flash_csb, flash_i0 and flash_i1  </b></I> at every level of the modules and also in the spiflash module.
 
 # Firmware - Asmita/Aman/Ayyappa
 - C code written(which gets concerted to hex along with bootcode) /flowchart in ppt/
