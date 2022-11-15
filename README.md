@@ -9,6 +9,8 @@ This git repo describes the whole process of PCB design for the Caravel_Board an
 Steps to follow :
 
 ```
+$ git clone https://github.com/DantuNandiniDevi/Caravel_pcb
+
 $ cd Caravel_pcb/verification/verilog/dv/caravel/mgmt_soc/hkspi
 
 $ export PDK_ROOT=/home/ubuntu/OpenLane/pdks
