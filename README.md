@@ -10,12 +10,19 @@ Steps to follow :
 
 ```
 $ cd Caravel_pcb/verification/verilog/dv/caravel/mgmt_soc/hkspi
+
 $ export PDK_ROOT=/home/ubuntu/OpenLane/pdks
+
 $ export PDK=sky130A
+
 $ export GCC_PATH=/opt/riscv32/bin
+
 $ export GCC_PREFIX=riscv32-unknown-elf
+
 $ make 
+
 $ gtkwave hkspi.vcd 
+
 $ riscv32-unknown-elf-objdump --disassemble-all hkspi.elf > hkspi.disasm  <This to generate the disassembly file>
 ``` 
 
