@@ -11,7 +11,7 @@ void main()
 
 	i = 5;
 	j = 4;
-	k=i*j;
+	k=i+j;
 
 //    reg_mprj_io_37 = GPIO_MODE_MGMT_STD_OUTPUT;
 //    reg_mprj_io_36 = GPIO_MODE_MGMT_STD_OUTPUT;
