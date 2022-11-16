@@ -48,7 +48,7 @@ Waveforms at flash pins of caravel
 ![](images/image.png)
 Waveforms at pins of spi flash
 ![](images/spiflashpins.png)
-Waveforms at pins of spi flash
+
 
 # Bootcode Understanding - Mayank/Yashwant/Prabal
 
