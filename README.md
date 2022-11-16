@@ -51,6 +51,7 @@ Basically, the firmware is used to send the C code, in hex format, with all the 
 <p align="center">
 <img src="images/ft232_blockdiagram.jpeg">
 </p>
+
 ## Working of FT232
 
 * The FT232H defaults to asynchronous serial UART interface mode of operation (used in RS232 config). UART interface support for 7 or 8 data bits, 1 or 2 stop bits and Odd/ Even/ Mark/ Space/ No Parity.
