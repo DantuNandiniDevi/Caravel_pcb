@@ -74,6 +74,7 @@ There are 2 modes of operations : streaming and n-byte mode
 There is another mode called [pass though mode](https://github.com/DantuNandiniDevi/Caravel_pcb#pass-thorugh-mode) which is explained in the flash working part of the document.
 
 ### Data Flow in the circuit
+
 <p align="center">
 <img src="images/FT232_flow.jpeg">
 </p>
