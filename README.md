@@ -45,7 +45,7 @@ After opening gtkwave we can check multiple signals according to our requirement
 
 # Flash Working - Saketh/Yathin/Raj
 Waveforms at flash pins of caravel
-![](images/image.png)
+![](images/flashpins.png)
 Waveforms at pins of spi flash
 ![](images/spiflashpins.png)
 
