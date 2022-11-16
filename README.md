@@ -96,9 +96,9 @@ NOTE :
  
 - This triggered the reset flow till the picorv32 "resetn" which was activated at 1.005us.
  
-- The starting address of flash (x10000000) where the bootcode and rest of the programme are present got loaded in the CPU at 1.009us. 
+- The starting address of flash (0x10000000) where the bootcode and rest of the programme are present got loaded in the CPU at 1.009us. 
  
-- The instructon present in the (x10000000) got executed at 1.343us. 
+- The instructon present in the (0x10000000) got executed at 1.343us. 
  
 - The instruction present in address (0x100000B8) marks the end of bootcode excecution.
  
