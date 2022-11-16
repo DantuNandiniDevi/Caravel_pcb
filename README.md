@@ -114,6 +114,7 @@ NOTE :
 - The Bootcode is executed using Execute-In-Place (XIP) method.
 - Execute-In-Place (XIP) is a method of executing code directly from the serial Flash memory without copying the code to the RAM. The serial Flash memory is seen as another memory in the MCU's memory address map.
 - The _sidata of .data section is 0x10000210. which stated as _etext is the diassembly file. 
+- THe _sdata and _edata for this implementation is 0x0, which shows that the .data section was empty. 
 
 
 ## Implementation: 
