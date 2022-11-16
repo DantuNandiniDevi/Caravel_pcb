@@ -46,6 +46,8 @@ After opening gtkwave we can check multiple signals according to our requirement
 
 Basically, the firmware is used to send the C code, in hex format, with all the default pin and register definitions to the Caravel chip so that it can be run on it.
 
+## Waveform to show start of the Main part of the C code in the .vcd generated according to the disassembled code:
+* 
 
 # Host to FT232 & FT232 to Host - Nandini/Oishi/Nisha
 <p align="center">
