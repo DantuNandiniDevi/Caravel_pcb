@@ -52,6 +52,7 @@ Basically, the firmware is used to send the C code, in hex format, with all the 
 <img src="images/ft232_blockdiagram.jpeg">
 </p>
 ## Working of FT232
+
 * The FT232H defaults to asynchronous serial UART interface mode of operation (used in RS232 config). UART interface support for 7 or 8 data bits, 1 or 2 stop bits and Odd/ Even/ Mark/ Space/ No Parity.
 * It is compatible with Hi-Speed 480 Mbits/sec and Full-Speed 12Mbits/sec. Data transfer rates is upto 12 MBaud at TTL levels.
 
@@ -73,7 +74,7 @@ There are 2 modes of operations : streaming and n-byte mode
 
 There is another mode called [pass though mode](https://github.com/DantuNandiniDevi/Caravel_pcb#pass-thorugh-mode) which is explained in the flash working part of the document.
 
-### Data Flow in the circuit
+## Data Flow in the circuit
 
 <p align="center">
 <img src="images/FT232_flow.jpeg">
