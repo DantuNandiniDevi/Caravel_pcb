@@ -45,6 +45,13 @@ After opening gtkwave we can check multiple signals according to our requirement
 
 # Flash Working - Saketh/Yathin/Raj
 ## Pass Thorugh Mode
+* There are 2 pass through modes. The first pass through modes used flash in the management project. The second pass through mode corresponds to a secondary flash that can be defined in the user project. 
+* In the first pass through mode, the CPU is immediately set into reset. Then sets the flas_csb to low which initiates the data transfer to QSPI.
+* Now all the SPI signals(SDI,SCK) are directly applied to QSPI Flash pins flash io0 and flash clk respectively. QSPI flash io1 is directly connected to SDO of HKSPI.
+* Once the data transfer is complete, the CSB pin of both QSPi and HKSPI goes high. Now the CPU is brought out of reset and starts executing instructions at the program start address.  
+* Using the pass through mode, we can transfer data to spi flash without any external access.
+* Currently management SOC has only 4 pin spi mode. User project may elect quad SPI using 6 pin mode.When the 6 pin mode is used, gpio pins 36,37 gets converted into flash io2 and flas io3 pins respectively.
+
 
 ## Waveforms at flash pins of caravel
 ![](images/flashpins.png)
@@ -52,7 +59,8 @@ After opening gtkwave we can check multiple signals according to our requirement
 ![](images/spiflashpins.png)
 
 ## Flash Specifications
-### We are using a QUAD I/O SPI NOR Flash wiht 32mb memory. Given below is the instructions set of the flash we used.
+We are using a QUAD I/O SPI NOR Flash wiht 32mb memory. <br />
+Given below is the instructions set of the flash we used. <br />
 ![](images/instructions.png)
 
 
