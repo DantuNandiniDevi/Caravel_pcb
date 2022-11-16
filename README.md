@@ -67,6 +67,10 @@ There are 2 modes of operations : streaming and n-byte mode
 * In **streaming mode** operation, the data is sent or received continuously, one byte at a time, with the internal address incrementing for each byte. Streaming mode operation continues until CSB is raised to end the transfer.
 * In **n-byte mode** operation, the number of bytes to be read and/or written is encoded in the command word, and may have a value from 1 to 7 (note that a value of zero implies streaming mode). After n bytes have been read and/or written, the SPI returns to waiting for the next command. No toggling of CSB is required to end the command or to initiate the following command.
 
+There is another mode called [pass though mode](https://github.com/DantuNandiniDevi/Caravel_pcb#pass-thorugh-mode) which is explained in the flash working part of the doc.
+
+### Data Flow in the circuit
+
 
 
 # Flash Working - Saketh/Yathin/Raj
