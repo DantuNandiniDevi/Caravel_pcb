@@ -54,7 +54,12 @@ After opening gtkwave we can check multiple signals according to our requirement
 
 
 ## Waveforms at flash pins of caravel
-![](images/flashpins.png)
+* Initially, an intrustruction with opcode 0xAB is sent through flash io0 pin to release from deep power down.
+* Once it gets released, we give another instruction with opcode 0x03 to read 3 byte address coming from flash io1 pin.
+* We next observe HPSPI_CSB becoming low, which indicates HKSPI is active. Then at every posedge of HKSPI, we get valid data.
+
+![](images/flashpins.png) 
+ 
 ## Waveforms at pins of spi flash
 ![](images/spiflashpins.png)
 
