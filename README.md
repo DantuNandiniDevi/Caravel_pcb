@@ -48,7 +48,9 @@ Basically, the firmware is used to send the C code, in hex format, with all the 
 
 
 # Host to FT232 & FT232 to Host - Nandini/Oishi/Nisha
-![](images/ft232_blockdiagram.jpeg)
+<p align="center">
+<img src="images/ft232_blockdiagram.jpeg">
+</p>
 ## Working of FT232
 * The FT232H defaults to asynchronous serial UART interface mode of operation (used in RS232 config). UART interface support for 7 or 8 data bits, 1 or 2 stop bits and Odd/ Even/ Mark/ Space/ No Parity.
 * It is compatible with Hi-Speed 480 Mbits/sec and Full-Speed 12Mbits/sec. Data transfer rates is upto 12 MBaud at TTL levels.
@@ -57,7 +59,9 @@ Basically, the firmware is used to send the C code, in hex format, with all the 
 ## Housekeeping SPI
 Housekeeping SPI is a SPI responder that cen be accessed from a remote host through 4-pin serial interface. The SPI implementation is mode 0, with new data on SDI captured on the SCK rising edge, and output data presented on the falling edge of SCK. The SPI pins are shared with user area GPIO.
 ### Timing diagram of Housekeeping SPI
-![](images/housekeepingSPI.jpeg)
+<p align="center">
+<img src="images/housekeepingSPI.jpeg">
+</p>
 * The command sequence has one command word (8 bits), followed by one address word (8 bits), followed by one or more data words (8 bits).
 * The SPI implementation enables data transmission when CSB pin is low. The new data is captured on SDI at the rising edge of SCK and output data is presented on the falling edge of SCK which is received on the SDO line.
 * After CSB is set low, the SPI is always in the "command" state, awaiting for a new command.
@@ -67,9 +71,36 @@ There are 2 modes of operations : streaming and n-byte mode
 * In **streaming mode** operation, the data is sent or received continuously, one byte at a time, with the internal address incrementing for each byte. Streaming mode operation continues until CSB is raised to end the transfer.
 * In **n-byte mode** operation, the number of bytes to be read and/or written is encoded in the command word, and may have a value from 1 to 7 (note that a value of zero implies streaming mode). After n bytes have been read and/or written, the SPI returns to waiting for the next command. No toggling of CSB is required to end the command or to initiate the following command.
 
-There is another mode called [pass though mode](https://github.com/DantuNandiniDevi/Caravel_pcb#pass-thorugh-mode) which is explained in the flash working part of the doc.
+There is another mode called [pass though mode](https://github.com/DantuNandiniDevi/Caravel_pcb#pass-thorugh-mode) which is explained in the flash working part of the document.
 
 ### Data Flow in the circuit
+<p align="center">
+<img src="images/FT232_flow.jpeg">
+</p>
+
+-> The Bitstream generated from the firmware is passed onto the board using the USB module.
+
+-> The USB module connects to a FT232 module which converts the incoming bitstream into an SPI inferface signals.
+
+-> The SPI interface signals from FT232 are connected to the SPI interface of the caravel.
+
+-> There is a different flash interface to connect flash to caravel. The signals from the FT232 are sent to flash using the housekeeping flash interface through caravel.
+
+Bootcode/Firmware signals at the FT232 input  interface.
+
+![image](https://user-images.githubusercontent.com/62461290/202191303-8644b8c8-6f92-4bfa-a48d-23df9846ae1d.png)
+
+Bootcode/Firmware signals at the caravel interface.
+
+![image](https://user-images.githubusercontent.com/62461290/202191516-01cf639b-6e5f-4fa4-9865-2ebd183ce522.png)
+
+Bootcode/Firmware signals at the External Flash interface.
+
+![image](https://user-images.githubusercontent.com/62461290/202191006-de838f8b-c530-4a78-b42d-e223dad0e640.png)
+
+In the below picture we can observe the signals at every negative clock edge the `flash_io1` data signal is valid. It matches with the `spi_out` register and the CPU read it (as seen in `mem_rdata`) in the consecutive clock cycle and executes accordingly.
+
+![image](https://user-images.githubusercontent.com/62461290/202193770-75c253c2-82b9-44f1-b29c-a3a036019a26.png)
 
 
 
