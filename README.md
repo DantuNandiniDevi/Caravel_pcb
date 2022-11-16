@@ -35,9 +35,12 @@ After opening gtkwave we can check multiple signals according to our requirement
 -> To check the Flash signal flow. We can see flash signals <b><I> flash_clk, flash_csb, flash_i0 and flash_i1  </b></I> at every level of the modules and also in the spiflash module.
 
 # Firmware - Asmita/Aman/Ayyappa
+## Basic Firmware flow (C code, Header files and conversion to Hex file)
 * We write a C code which we want to run on the Caravel chip and include the header file - [defs_mpw-two-mfix.h](https://github.com/DantuNandiniDevi/Caravel_pcb/blob/main/verification/verilog/dv/caravel/mgmt_soc/hkspi/defs_mpw-two-mfix.h) in it. It includes the definitions of all the mprj pins, logic analyzer pins, Flash SPI control register, Counter timer configurations, Bit fields for Counter-timer configuration, SPI Master register Configuration, Bit fields for SPI master configuration, Individual bit fields for the GPIO pad control. All these definition values are as per the [Efabless Caravel “harness” SoC documentation](https://caravel-harness.readthedocs.io/en/latest/). We have run a blink.c code and a simple multiplication.c code.
 ![](images/initial_flow.png) 
-* As shown in the flowchart above, this C code is converted to a hex file through the RISCV32IM GCC GNU Toolchain in the [Makefile](https://github.com/DantuNandiniDevi/Caravel_pcb/blob/main/verification/verilog/dv/caravel/mgmt_soc/hkspi/Makefile). 
+* As shown in the flowchart above, this C code is converted to a hex file through the RISCV32IM GCC GNU Toolchain in the [Makefile](https://github.com/DantuNandiniDevi/Caravel_pcb/blob/main/verification/verilog/dv/caravel/mgmt_soc/hkspi/Makefile).
+
+## Python script flow (Script used to send Hex file to Caravel)
 * This hex file is sent to the Caravel flash through the Python Script explained in the flowchart below:
 ![](images/pythonscript_flow.png) 
 
