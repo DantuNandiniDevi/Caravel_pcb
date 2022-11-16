@@ -44,12 +44,15 @@ After opening gtkwave we can check multiple signals according to our requirement
 # Host to FT232 & FT232 to Host - Nandini/Oishi/Nisha
 
 # Flash Working - Saketh/Yathin/Raj
-Waveforms at flash pins of caravel
+## Pass Thorugh Mode
+
+## Waveforms at flash pins of caravel
 ![](images/flashpins.png)
-Waveforms at pins of spi flash
+## Waveforms at pins of spi flash
 ![](images/spiflashpins.png)
 
-## Flash Specification
+## Flash Specifications
+### We are using a QUAD I/O SPI NOR Flash wiht 32mb memory. Given below is the instructions set of the flash we used.
 ![](images/instructions.png)
 
 
