@@ -57,7 +57,7 @@ Basically, the firmware is used to send the C code, in hex format, with all the 
 ## Housekeeping SPI
 Housekeeping SPI is a SPI responder that cen be accessed from a remote host through 4-pin serial interface. The SPI implementation is mode 0, with new data on SDI captured on the SCK rising edge, and output data presented on the falling edge of SCK. The SPI pins are shared with user area GPIO.
 ### Timing diagram of Housekeeping SPI
-![](image/housekeepingSPI.jpeg)
+![](images/housekeepingSPI.jpeg)
 * The command sequence has one command word (8 bits), followed by one address word (8 bits), followed by one or more data words (8 bits).
 * The SPI implementation enables data transmission when CSB pin is low. The new data is captured on SDI at the rising edge of SCK and output data is presented on the falling edge of SCK which is received on the SDO line.
 * After CSB is set low, the SPI is always in the "command" state, awaiting for a new command.
