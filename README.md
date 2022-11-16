@@ -65,7 +65,8 @@ After opening gtkwave we can check multiple signals according to our requirement
 
 ## Flash Specifications
 We are using a QUAD I/O SPI NOR Flash wiht 32mb memory. <br />
-Given below is the instructions set of the flash we used. <br />
+Given below is the instructions set of the flash we used.
+<br />
 ![](images/instructions.png)
 
 
