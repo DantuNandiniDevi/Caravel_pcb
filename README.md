@@ -48,6 +48,26 @@ Basically, the firmware is used to send the C code, in hex format, with all the 
 
 
 # Host to FT232 & FT232 to Host - Nandini/Oishi/Nisha
+![](images/)
+## Working of FT232
+* The FT232H defaults to asynchronous serial UART interface mode of operation (used in RS232 config). UART interface support for 7 or 8 data bits, 1 or 2 stop bits and Odd/ Even/ Mark/ Space/ No Parity.
+* It is compatible with Hi-Speed 480 Mbits/sec and Full-Speed 12Mbits/sec. Data transfer rates is upto 12 MBaud at TTL levels.
+
+
+## Housekeeping SPI
+Housekeeping SPI is a SPI responder that cen be accessed from a remote host through 4-pin serial interface. The SPI implementation is mode 0, with new data on SDI captured on the SCK rising edge, and output data presented on the falling edge of SCK. The SPI pins are shared with user area GPIO.
+### Timing diagram of Housekeeping SPI
+![](image/)
+* The command sequence has one command word (8 bits), followed by one address word (8 bits), followed by one or more data words (8 bits).
+* The SPI implementation enables data transmission when CSB pin is low. The new data is captured on SDI at the rising edge of SCK and output data is presented on the falling edge of SCK which is received on the SDO line.
+* After CSB is set low, the SPI is always in the "command" state, awaiting for a new command.
+
+### Housekeeping SPI modes
+There are 2 modes of operations : streaming and n-byte mode
+* In **streaming mode** operation, the data is sent or received continuously, one byte at a time, with the internal address incrementing for each byte. Streaming mode operation continues until CSB is raised to end the transfer.
+* In **n-byte mode** operation, the number of bytes to be read and/or written is encoded in the command word, and may have a value from 1 to 7 (note that a value of zero implies streaming mode). After n bytes have been read and/or written, the SPI returns to waiting for the next command. No toggling of CSB is required to end the command or to initiate the following command.
+
+
 
 # Flash Working - Saketh/Yathin/Raj
 ## Pass Thorugh Mode
