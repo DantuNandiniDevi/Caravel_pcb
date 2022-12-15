@@ -156,27 +156,55 @@ padframe chip_io throught "resetb" which is triggered at exactly 1us.
 
 ## Bootcode flow:
 
-The Booting flow during reset and start are almost the same.
+The Booting flow during reset and start are almost the same, as during the POR circuit generate the same reset signal.
 
-- Initializing all the register file from x1 to x31 with value 0, except x2 (Stack pointer) which has been initialized by the reset itself (it is also initiated during start ).
+### STEP-1
+
+- Initializing all the register file from x1 to x31 with value 0, except x2 (Stack pointer) and x0 (Hardwired zero register) which has been initialized by the reset itself (it is also initiated during start when POR circuit generate the same reset signal).
+
+- The address loaded in the Stack Pointer is 0x00000400.
+
+![](images/PicoRV_Register.png)
+
+### STEP-2
 
 - Copying the initialization value of .data section which involves moving the data from _sidata (start address for the initialization values of the .data section defined in linker script) to between  _sdata and _edata. (start & end address for the .data section defined in linker script respectively).
 
 - Initializing the value present in .bss section (block start symbol) to zero. The .bss section address starts from _sbss to _ebss . 
 
+NOTE :
+- The .data section and .bss section are present in RAM (as described in linker file) with the origin address of 0x01000000.  
+
+![](images/STEP-2.png)
+
+- The program code to run after reset and other data are present in the Flash with origin address 0x10000000. 
+- The Bootcode is executed using Execute-In-Place (XIP) method.
+- Execute-In-Place (XIP) is a method of executing code directly from the serial Flash memory without copying the code to the RAM. The serial Flash memory is seen as    another memory in the MCU's memory address map.
+- The _sidata of .data section is 0x10000210. which stated as _etext is the diassembly file. 
+- THe _sdata and _edata for this implementation is 0x0, which shows that the .data section was empty. 
+
+
+### STEP-3
+
+![](images/STEP_3.png)
+
+-  Setting the SPI to manual mode for sending optional WREN command and again  setting it back to MEMIO mode. (optional)
+
 - Setting the CS (Chip Select) bit HIGH and IO0 as output through SPI control register at address 0x28000000 and enabling manual control of SPI.
+
+- Chip Select (CS) is turned HIGH, by setting the value of SPI control Register to 0x120.
+
+- Set the register at address 0x28000003 to 0x0.
 
 - Sending optional WREN command through SPI. These command enable access to files, IO , networking etc
 
 - Once the command have been send the SPI is returned to the previous mode (MEMIO).
 
-NOTE :
-- The .data section and .bss section are present in RAM (as described in linker file) with the origin address of 0x01000000.  
-- The program code to run after reset and other data are present in the Flash with origin address 0x10000000. 
-- The Bootcode is executed using Execute-In-Place (XIP) method.
-- Execute-In-Place (XIP) is a method of executing code directly from the serial Flash memory without copying the code to the RAM. The serial Flash memory is seen as another memory in the MCU's memory address map.
-- The _sidata of .data section is 0x10000210. which stated as _etext is the diassembly file. 
-- THe _sdata and _edata for this implementation is 0x0, which shows that the .data section was empty. 
+- This is done by setting the register at 0x28000003 to 0x80.
+
+NOTE : 
+
+For Step-3 to take place, a2 register should not be initialised with zero. This disables the WREN command transission. 
 
 
 ## Implementation: 
