@@ -247,7 +247,6 @@ The PCB files are available at `modified_caravel_pcb_files` in this repo.
 
 # Contributers
 
-- Kunal Ghosh
 - Mayank Kabra
 - Yashwanth Mosses
 - Saketh Gajawada
@@ -260,6 +259,7 @@ The PCB files are available at `modified_caravel_pcb_files` in this repo.
 - Raj Kachhadiya
 - Nisha Agarwal
 - Prabhal Mahajan
+- Kunal Ghosh
 
 # Acknowledgement
 
