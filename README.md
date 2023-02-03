@@ -236,3 +236,42 @@ For Step-3 to take place, a2 register should not be initialised with zero. This 
 Note: 
 In this implementation the WREN command were not transmitted. 
 
+# Designed PCB
+
+The PCB files are available at `modified_caravel_pcb_files` in this repo.
+
+![asicpcb1](https://user-images.githubusercontent.com/62461290/216525639-26cb57d1-fca2-4786-a64d-f7ae93b6e7cb.png)
+
+
+![asicpcb2](https://user-images.githubusercontent.com/62461290/216525658-d7cc558e-ce0c-4a6c-8a29-70058cc219db.png)
+
+# Contributers
+
+- Kunal Ghosh
+- Mayank Kabra
+- Yashwanth Mosses
+- Saketh Gajawada
+- Yathin Kumar
+- Ashmita Zjigyasu
+- Oishi Seth
+- Dantu Nandini Devi
+- Ayyappa Koppuravuri
+- Aman P
+- Raj Kachhadiya
+- Nisha Agarwal
+- Prabhal Mahajan
+
+# Acknowledgement
+
+- Kunal Ghosh, VSD Corp. Pvt. Ltd.
+- Nanditha Rao, Professor, IIITB 
+- Madhav Rao, Professor, IIITB 
+- Efabless Corporation
+- Skywater Foundry
+- Google
+
+# References
+
+- https://github.com/efabless/caravel
+- https://github.com/efabless/caravel_board
+- https://github.com/efabless/caravel_mpw-one
