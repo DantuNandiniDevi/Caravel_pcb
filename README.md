@@ -58,12 +58,12 @@ Here we can see that the execution of main starts at around 23.3 us.
 
 ## Working of FT232
 
-* The FT232H defaults to asynchronous serial UART interface mode of operation (used in RS232 config). UART interface support for 7 or 8 data bits, 1 or 2 stop bits and Odd/ Even/ Mark/ Space/ No Parity.
+* The FT232H defaults to the asynchronous serial UART interface mode of operation (used in RS232 config). UART interface support for 7 or 8 data bits, 1 or 2 stop bits and Odd/ Even/ Mark/ Space/ No Parity.
 * It is compatible with Hi-Speed 480 Mbits/sec and Full-Speed 12Mbits/sec. Data transfer rates is upto 12 MBaud at TTL levels.
 
 
 ## Housekeeping SPI
-Housekeeping SPI is a SPI responder that cen be accessed from a remote host through 4-pin serial interface. The SPI implementation is mode 0, with new data on SDI captured on the SCK rising edge, and output data presented on the falling edge of SCK. The SPI pins are shared with user area GPIO.
+Housekeeping SPI is an SPI responder that can be accessed from a remote host through the 4-pin serial interface. The SPI implementation is mode 0, with new data on SDI captured on the SCK rising edge, and output data presented on the falling edge of SCK. The SPI pins are shared with the user area GPIO.
 ### Timing diagram of Housekeeping SPI
 <p align="center">
 <img src="images/housekeepingSPI.jpeg">
@@ -73,11 +73,11 @@ Housekeeping SPI is a SPI responder that cen be accessed from a remote host thro
 * After CSB is set low, the SPI is always in the "command" state, awaiting for a new command.
 
 ### Housekeeping SPI modes
-There are 2 modes of operations : streaming and n-byte mode
-* In **streaming mode** operation, the data is sent or received continuously, one byte at a time, with the internal address incrementing for each byte. Streaming mode operation continues until CSB is raised to end the transfer.
-* In **n-byte mode** operation, the number of bytes to be read and/or written is encoded in the command word, and may have a value from 1 to 7 (note that a value of zero implies streaming mode). After n bytes have been read and/or written, the SPI returns to waiting for the next command. No toggling of CSB is required to end the command or to initiate the following command.
+There are 2 modes of operations: streaming and n-byte mode
+* In the **streaming mode** operation, the data is sent or received continuously, one byte at a time, with the internal address incrementing for each byte. Streaming mode operation continues until CSB is raised to end the transfer.
+* In the **n-byte mode** operation, the number of bytes to be read and/or written is encoded in the command word, and may have a value from 1 to 7 (note that a value of zero implies streaming mode). After n bytes have been read and/or written, the SPI returns to waiting for the next command. No toggling of CSB is required to end the command or to initiate the following command.
 
-There is another mode called [pass though mode](https://github.com/DantuNandiniDevi/Caravel_pcb#pass-thorugh-mode) which is explained in the flash working part of the document.
+There is another mode called [pass through mode](https://github.com/DantuNandiniDevi/Caravel_pcb#pass-thorugh-mode) which is explained in the flash working part of the document.
 
 ## Data Flow in the circuit
 
@@ -234,7 +234,7 @@ For Step-3 to take place, a2 register should not be initialised with zero. This 
 ![](images/Bootcode_end.png)
 
 Note: 
-In this implementation the WREN command were not transmitted. 
+In this implementation, the WREN command were not transmitted. 
 
 # Designed PCB
 
@@ -251,7 +251,7 @@ The PCB files are available at `modified_caravel_pcb_files` in this repo.
 - Yashwanth Mosses
 - Saketh Gajawada
 - Yathin Kumar
-- Ashmita Zjigyasu
+- Asmita Zjigyasu
 - Oishi Seth
 - Dantu Nandini Devi
 - Ayyappa Koppuravuri
