@@ -248,7 +248,7 @@ The PCB files are available at `modified_caravel_pcb_files` in this repo.
 # Contributers
 
 - Mayank Kabra
-- Yashwanth Mosses
+- Yashwant Moses
 - Saketh Gajawada
 - Yathin Kumar
 - Asmita Zjigyasu
